@@ -440,6 +440,15 @@ function clearAll() {
 }
 
 function compute() {
+  if (forces.length === 0) {
+    totalsOverlay.innerHTML = `
+      <div>∑Fx = 0.000 N</div>
+      <div>∑Fy = 0.000 N</div>
+      <div>∑M = 0.000 Nm</div>
+      <div>狀態: -</div>
+    `;
+    return;
+  }
   let Fx = 0, Fy = 0, M = 0;
   forces.forEach(f => {
     const fx = f.mag * Math.cos(f.angle);
